@@ -46,8 +46,8 @@ public class DANI extends PApplet {
 				else finalWordInString = false;
 				
 				if(!finalWordInString) {
-					wordsArray[wordIndex+1] = wordsArray[wordIndex+1].replaceAll("[^a-zA-Z ]", "");
-					wordsArray[wordIndex+1] = wordsArray[wordIndex+1].toLowerCase();
+					wordsArray[wordIndex+1] = wordsArray[wordIndex + 1].replaceAll("[^a-zA-Z ]", "");
+					wordsArray[wordIndex+1] = wordsArray[wordIndex + 1].toLowerCase();
 				}
 
 				findWordResult = searchWord(wordsArray[wordIndex]);
@@ -59,8 +59,8 @@ public class DANI extends PApplet {
 				else newWord = wordArrayList.get(findWordResult);
 		
 				if(!finalWordInString) {
-					if(newWord.findFollow(wordsArray[wordIndex+1]) == -1) newWord.addFollow(new Follow(wordsArray[wordIndex+1], 1));
-					else newWord.addFollowCount(newWord.getFollowArrayList().get(newWord.findFollow(wordsArray[wordIndex+1])));
+					if(newWord.findFollow(wordsArray[wordIndex + 1]) == -1) newWord.addFollow(new Follow(wordsArray[wordIndex + 1], 1));
+					else newWord.addFollowCount(newWord.getFollowArrayList().get(newWord.findFollow(wordsArray[wordIndex + 1])));
 				}
 			}
 		}
@@ -86,7 +86,7 @@ public class DANI extends PApplet {
 			sonnetStringBuilder = new StringBuilder();
 			sonnetStringBuilder.append(randomWordfromIndex.getWord() + " ");
 
-			for(int indexFollow = 0; indexFollow < sonnetSize / 2;indexFollow++) {
+			for(int indexFollow = 0; indexFollow < sonnetSize / 2; indexFollow++) {
 				int randomFollow;
 
 				if(randomWordfromIndex.getFollowArrayList().size() == 0) break;

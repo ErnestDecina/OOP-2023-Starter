@@ -31,11 +31,8 @@ public class Word {
     }
 
     public int findFollow(String word) {
-        for(Follow currentFollow : followArrayList) {
-            if(currentFollow.getWord().equals(word)) {
-                return followArrayList.indexOf(currentFollow);
-            }
-        }
+        for(Follow currentFollow : followArrayList)
+            if(currentFollow.getWord().equals(word))  return followArrayList.indexOf(currentFollow);
         return -1;
     }
 

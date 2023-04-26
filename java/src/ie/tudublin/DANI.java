@@ -56,8 +56,7 @@ public class DANI extends PApplet {
 					wordArrayList.add(newWord);
 				}
 				else newWord = wordArrayList.get(findWordResult);
-			
-
+		
 				if(!finalWordInString) {
 					if(newWord.findFollow(wordsArray[wordIndex+1]) == -1) newWord.addFollow(new Follow(wordsArray[wordIndex+1], 1));
 					else newWord.addFollowCount(newWord.getFollowArrayList().get(newWord.findFollow(wordsArray[wordIndex+1])));
@@ -67,9 +66,9 @@ public class DANI extends PApplet {
 	}
 
 	public int findWord(String word){
-		for(int wordIndex = 0; wordIndex < wordArrayList.size(); wordIndex ++) {
+		for(int wordIndex = 0; wordIndex < wordArrayList.size(); wordIndex ++)
 			if(wordArrayList.get(wordIndex).getWord().equals(word)) return wordIndex;
-		}
+
 		return -1;
 	}
 

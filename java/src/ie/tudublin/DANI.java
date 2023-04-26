@@ -40,7 +40,7 @@ public class DANI extends PApplet {
 
 				boolean finalWordInString;
 
-				if(wordIndex+1 == wordsArray.length) finalWordInString = true;
+				if(wordIndex + 1 == wordsArray.length) finalWordInString = true;
 				else finalWordInString = false;
 				
 				if(!finalWordInString) {
@@ -85,7 +85,7 @@ public class DANI extends PApplet {
 			sonnetStringBuilder = new StringBuilder();
 			sonnetStringBuilder.append(randomWordfromIndex.getWord() + " ");
 
-			for(int indexFollow = 0; indexFollow < 7;indexFollow++) {
+			for(int indexFollow = 0; indexFollow < sonnetSize / 2;indexFollow++) {
 				int randomFollow;
 
 				if(randomWordfromIndex.getFollowArrayList().size() == 0) break;

@@ -44,7 +44,7 @@ public class Word {
     
     public String toString() {
         String result = "";
-        result += word + ":";
+        result += word + " :";
         for(Follow currentFollow : followArrayList)
             result += " " + currentFollow.toString();
 

@@ -11,6 +11,7 @@ public class DANI extends PApplet {
 
 	int sonnetSize = 14;
 	int textSize = 15;
+	int gap = 20;
 
 	public void settings() {
 		size(1000, 1000);
@@ -51,7 +52,7 @@ public class DANI extends PApplet {
 
 				findWordResult = searchWord(wordsArray[wordIndex]);
 	
-				if(findWordResult == -1) {
+				if(searchWord(wordsArray[wordIndex]) == -1) {
 					newWord = new Word(wordsArray[wordIndex]);
 					wordArrayList.add(newWord);
 				}
@@ -112,9 +113,8 @@ public class DANI extends PApplet {
 
 		fill(255);
 		textSize(textSize);
-		int gap = 20;
 		for(int stringSonnetIndex = 0; stringSonnetIndex <sonnetStringArray.length; stringSonnetIndex++)
-			text(sonnetStringArray[stringSonnetIndex], (width / 2) - 300, gap + stringSonnetIndex * gap + (300));
+			text(sonnetStringArray[stringSonnetIndex], (width / 2) - 400, gap + stringSonnetIndex * gap + 300);
 		
 		popMatrix();
 		popStyle();

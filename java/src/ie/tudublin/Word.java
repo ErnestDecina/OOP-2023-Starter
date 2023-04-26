@@ -42,7 +42,7 @@ public class Word {
     }
     
     public String toString() {
-        String result = "";
+        String result = "Word: ";
         result += word + " :";
         for(Follow currentFollow : followArrayList)
             result += " " + currentFollow.toString();

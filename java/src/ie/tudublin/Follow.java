@@ -10,7 +10,7 @@ public class Follow {
     } // End Follow Constructor
 
     public String getWord() {
-        return word;
+        return this.word;
     }
 
     public int getCount() {
@@ -22,7 +22,7 @@ public class Follow {
     }
 
     public String toString() {
-        return (String) word + "( " + count + " )";
+        return (String) this.word + "( " + this.count + " )";
     }
     
 } // End class Follow

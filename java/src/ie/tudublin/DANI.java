@@ -1,171 +1,134 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-
 import processing.core.PApplet;
 
 public class DANI extends PApplet {
-	ArrayList<Word> model;
-	ArrayList<String> sonnect;
-	StringBuilder sb;
-	float off = 0;
+	ArrayList<Word> wordArrayList;
+	ArrayList<String> stringArrayList;
+	StringBuilder sonnetStringBuilder;
+	int sonnetSize = 14;
+	int textSize = 15;
 
 	public void settings() {
 		size(1000, 1000);
-		//fullScreen(SPAN);
 	}
 
-    String[] sonnet;
+    String[] sonnetStringArray;
 
 	public void setup() {
 		colorMode(HSB);
-		model = new ArrayList<Word>();
+		wordArrayList = new ArrayList<Word>();
 		loadFile();
-		printModel();
-		writeSonnet();
-		printSonnet();
-       
+		showModel();
+		createSonnet();       
 	}
 
 	public void keyPressed() {
 		if (key == ' ') {
-			writeSonnet();
+			createSonnet();
 		}
 	}
 
 	public void loadFile() {
-		String[] line = loadStrings("shakespere.txt");
-		for(int i = 0; i < line.length; i ++)
-		{
-			String[] words = split(line[i], " ");
-			for(int j = 0; j < words.length; j ++)
-			{
-				//get a word from line and create a word object, add it to model
-				//then get the next word and create a follow object, add it to the arraylist of follows in the word object
-				words[j] = words[j].replaceAll("[^a-zA-Z ]", "");
-				words[j] = words[j].toLowerCase();
+		String[] stringArray = loadStrings("shakespere.txt");
+		for(int stringIndex = 0; stringIndex < stringArray.length; stringIndex++) {
+			String[] wordsArray = split(stringArray[stringIndex], " ");
+			for(int wordIndex = 0; wordIndex < wordsArray.length; wordIndex ++) {
+				wordsArray[wordIndex] = wordsArray[wordIndex].replaceAll("[^a-zA-Z ]", "");
+				wordsArray[wordIndex] = wordsArray[wordIndex].toLowerCase();
 
-				//check if next word exist or not
-				boolean lastWord;
-				if(j+1 == words.length)
-				{
-					lastWord = true;
-				}
-				else
-				{
-					lastWord = false;
-				}
+				boolean finalWordInString;
+
+				if(wordIndex+1 == wordsArray.length) finalWordInString = true;
+				else finalWordInString = false;
 				
-				if(!lastWord)
-				{
-					words[j+1] = words[j+1].replaceAll("[^a-zA-Z ]", "");
-					words[j+1] = words[j+1].toLowerCase();
+				if(!finalWordInString) {
+					wordsArray[wordIndex+1] = wordsArray[wordIndex+1].replaceAll("[^a-zA-Z ]", "");
+					wordsArray[wordIndex+1] = wordsArray[wordIndex+1].toLowerCase();
 				}
 
-				int result = findWord(words[j]);
-				Word word;
-				//if word is not in model, add it
-				if(result == -1)
-				{
-					word = new Word(words[j]);
-					model.add(word);
+				int findWordResult = findWord(wordsArray[wordIndex]);
+				Word newWord;
+					
+				if(findWordResult == -1) {
+					newWord = new Word(wordsArray[wordIndex]);
+					wordArrayList.add(newWord);
 				}
-				else
-				{
-					word = model.get(result);
-				}
+				else newWord = wordArrayList.get(findWordResult);
+			
 
-				//check if follow for the word exist.
-				if(!lastWord)
-				{
-					if(word.findFollow(words[j+1]) == -1)
-					{
-						word.addFollow(new Follow(words[j+1], 1));
-					}
-					else
-					{
-						word.addFollowCount(word.getFollows().get(word.findFollow(words[j+1])));
-					}
+				if(!finalWordInString) {
+					if(newWord.findFollow(wordsArray[wordIndex+1]) == -1) newWord.addFollow(new Follow(wordsArray[wordIndex+1], 1));
+					else newWord.addFollowCount(newWord.getFollows().get(newWord.findFollow(wordsArray[wordIndex+1])));
 				}
 			}
 		}
 	}
 
-	public int findWord(String word)
-	{
-		for(int i = 0; i < model.size(); i ++)
-		{
-			if(model.get(i).getWord().equals(word))
-			{
+	public int findWord(String word){
+		for(int i = 0; i < wordArrayList.size(); i ++) {
+			if(wordArrayList.get(i).getWord().equals(word)) {
 				return i;
 			}
 		}
 		return -1;
 	}
 
-	public void printModel()
-	{
-		for(Word w:model)
-		{
-			System.out.println(w.toString());
+	public void showModel(){
+		for(Word wordInArrayList : wordArrayList) {
+			System.out.println(wordInArrayList.toString());
 		}
 	}
 
-	public void writeSonnet()
-	{
-		sonnet = new String[14];
-		//loop 14 times to create 14 lines
-		for (int i = 0; i < 14; i++)
-		{
-			int r = (int) random(0, model.size());
-			Word w = model.get(r);
-			sb = new StringBuilder();
-			sb.append(w.getWord() + " ");
+	public void createSonnet(){
+		sonnetStringArray = new String[sonnetSize];
+		for (int i = 0; i < sonnetSize; i++) {
+			int randomNumbeIndex = (int) random(0, wordArrayList.size());
+			Word randomWordfromIndex = wordArrayList.get(randomNumbeIndex);
+			sonnetStringBuilder = new StringBuilder();
+			sonnetStringBuilder.append(randomWordfromIndex.getWord() + " ");
 
-			for(int k = 0; k < 7;k++)
-			{
-				int r2;
+			for(int indexFollow = 0; indexFollow < 7;indexFollow++) {
+				int randomFollow;
 
-				if(w.getFollows().size() == 0)
-				{
+				if(randomWordfromIndex.getFollows().size() == 0) {
 					break;
 				}
 
-				else
-				{
-					r2 = (int) random(0, w.getFollows().size());
+				else {
+					randomFollow = (int) random(0, randomWordfromIndex.getFollows().size());
 				}
-				Follow f = w.getFollows().get(r2);
-				sb.append(f.getWord() + " ");
-				w = model.get(findWord(f.getWord()));
+				Follow randomFollowWord = randomWordfromIndex.getFollows().get(randomFollow);
+				sonnetStringBuilder.append(randomFollowWord.getWord() + " ");
+				randomWordfromIndex = wordArrayList.get(findWord(randomFollowWord.getWord()));
 
 			}
-			String s = sb.toString();
-			sonnet[i] = s;
+			String s = sonnetStringBuilder.toString();
+			sonnetStringArray[i] = s;
 		}
 	}
 
-	public void printSonnet()
-	{
-		for(String s:sonnet)
-		{
-			System.out.println(s);
-		}
-	}
-
-	public void draw() 
-    {
+	public void draw() {
 		background(0);
+		renderSonnet();
+
+	}
+
+	public void renderSonnet() {
+		pushMatrix();
+		pushStyle();
+
 		fill(255);
-		noStroke();
-		textSize(20);
-        textAlign(CENTER, CENTER);
-		int gap = 50;
-		for(int i = 0;i<sonnet.length;i++)
+		textSize(textSize);
+		int gap = 20;
+		for(int stringSonnetIndex = 0; stringSonnetIndex <sonnetStringArray.length; stringSonnetIndex++)
 		{
-			text(sonnet[i], width/2, gap + i * gap);
+			text(sonnetStringArray[stringSonnetIndex], (width / 2) - 300, gap + stringSonnetIndex * gap + (300));
 		}
-        
+		
+		popMatrix();
+		popStyle();
 	}
 
 

@@ -7,14 +7,14 @@ public class DANI extends PApplet {
 	ArrayList<Word> wordArrayList;
 	ArrayList<String> stringArrayList;
 	StringBuilder sonnetStringBuilder;
+	String[] sonnetStringArray;
+
 	int sonnetSize = 14;
 	int textSize = 15;
 
 	public void settings() {
 		size(1000, 1000);
 	}
-
-    String[] sonnetStringArray;
 
 	public void setup() {
 		colorMode(HSB);
@@ -48,7 +48,7 @@ public class DANI extends PApplet {
 					wordsArray[wordIndex+1] = wordsArray[wordIndex+1].toLowerCase();
 				}
 
-				int findWordResult = findWord(wordsArray[wordIndex]);
+				int findWordResult = searchWord(wordsArray[wordIndex]);
 				Word newWord;
 					
 				if(findWordResult == -1) {
@@ -65,7 +65,7 @@ public class DANI extends PApplet {
 		}
 	}
 
-	public int findWord(String word){
+	public int searchWord(String word){
 		for(int wordIndex = 0; wordIndex < wordArrayList.size(); wordIndex ++)
 			if(wordArrayList.get(wordIndex).getWord().equals(word)) return wordIndex;
 
@@ -93,7 +93,7 @@ public class DANI extends PApplet {
 
 				Follow randomFollowWord = randomWordfromIndex.getFollowArrayList().get(randomFollow);
 				sonnetStringBuilder.append(randomFollowWord.getWord() + " ");
-				randomWordfromIndex = wordArrayList.get(findWord(randomFollowWord.getWord()));
+				randomWordfromIndex = wordArrayList.get(searchWord(randomFollowWord.getWord()));
 			}
 			String s = sonnetStringBuilder.toString();
 			sonnetStringArray[i] = s;

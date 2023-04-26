@@ -109,6 +109,40 @@ public class DANI extends PApplet {
 			System.out.println(w.toString());
 		}
 	}
-	
+
+	public void writeSonnet()
+	{
+		sonnet = new String[14];
+		//loop 14 times to create 14 lines
+		for (int i = 0; i < 14; i++)
+		{
+			int r = (int) random(0, model.size());
+			Word w = model.get(r);
+			sb = new StringBuilder();
+			sb.append(w.getWord() + " ");
+
+			for(int k = 0; k < 7;k++)
+			{
+				int r2;
+
+				if(w.getFollows().size() == 0)
+				{
+					break;
+				}
+
+				else
+				{
+					r2 = (int) random(0, w.getFollows().size());
+				}
+				Follow f = w.getFollows().get(r2);
+				sb.append(f.getWord() + " ");
+				w = model.get(findWord(f.getWord()));
+
+			}
+			String s = sb.toString();
+			sonnet[i] = s;
+		}
+	}
+
 
 }

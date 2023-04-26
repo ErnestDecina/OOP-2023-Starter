@@ -89,13 +89,9 @@ public class DANI extends PApplet {
 			for(int indexFollow = 0; indexFollow < 7;indexFollow++) {
 				int randomFollow;
 
-				if(randomWordfromIndex.getFollowArrayList().size() == 0) {
-					break;
-				}
+				if(randomWordfromIndex.getFollowArrayList().size() == 0) break;
+				else randomFollow = (int) random(0, randomWordfromIndex.getFollowArrayList().size());
 
-				else {
-					randomFollow = (int) random(0, randomWordfromIndex.getFollowArrayList().size());
-				}
 				Follow randomFollowWord = randomWordfromIndex.getFollowArrayList().get(randomFollow);
 				sonnetStringBuilder.append(randomFollowWord.getWord() + " ");
 				randomWordfromIndex = wordArrayList.get(findWord(randomFollowWord.getWord()));

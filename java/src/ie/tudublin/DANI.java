@@ -80,6 +80,7 @@ public class DANI extends PApplet {
 
 	private void loadWords() {
 		// Load Words into A array 
+		/* 
 		for(int stringIndex = 0; stringIndex < stringArray.length; stringIndex++) {
 			for(int wordIndex = 0; wordIndex < arrayWords.get(stringIndex).length; wordIndex++) {
 				Word newWord = new Word(arrayWords.get(stringIndex)[wordIndex]);
@@ -120,7 +121,7 @@ public class DANI extends PApplet {
 
 					if(wordIndex != arrayWords.get(stringIndex).length - 1) {
 						boolean followExists = false;
-						for(Follow follow : followList) {
+						for(Follow follow : wordArrayList.get(wordPlace).followArrayList) {
 							if(follow.word.equals(arrayWords.get(stringIndex)[wordIndex + 1])) {
 								followExists = true;
 								break;
@@ -150,7 +151,7 @@ public class DANI extends PApplet {
 					} // End if
 
 
-
+					*/
 
 
 

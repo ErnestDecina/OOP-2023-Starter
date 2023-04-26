@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Word {
     private String word;
-    private ArrayList<Follow> follows;
+    private ArrayList<Follow> followArrayList;
 
     public String getWord() {
         return word;
@@ -14,29 +14,26 @@ public class Word {
         this.word = word;
     }
 
-    public ArrayList<Follow> getFollows() {
-        return follows;
+    public ArrayList<Follow> getFollowArrayList() {
+        return followArrayList;
     }
 
-    public void setFollows(ArrayList<Follow> follows) {
-        this.follows = follows;
+    public void setFollowArrayList(ArrayList<Follow> follows) {
+        this.followArrayList = follows;
     }
-    public void addFollow(Follow f)
-    {
-        follows.add(f);
-    }
-    public void addFollowCount(Follow f)
-    {
-        f.setCount(f.getCount()+1);
+    
+    public void addFollow(Follow currentFollow) {
+        followArrayList.add(currentFollow);
     }
 
-    public int findFollow(String word)
-    {
-        for(Follow f:follows)
-        {
-            if(f.getWord().equals(word))
-            {
-                return follows.indexOf(f);
+    public void addFollowCount(Follow currentFollow) {
+        currentFollow.incrementCount();
+    }
+
+    public int findFollow(String word) {
+        for(Follow currentFollow : followArrayList) {
+            if(currentFollow.getWord().equals(word)) {
+                return followArrayList.indexOf(currentFollow);
             }
         }
         return -1;
@@ -45,16 +42,15 @@ public class Word {
 
     public Word(String word) {
         this.word = word;
-        follows = new ArrayList<Follow>();
+        followArrayList = new ArrayList<Follow>();
     }
     
-    public String toString()
-    {
+    public String toString() {
         String result = "";
         result += word + ":";
-        for(Follow f:follows)
+        for(Follow currentFollow : followArrayList)
         {
-            result += " " + f.toString();
+            result += " " + currentFollow.toString();
         }
         return result;
     }

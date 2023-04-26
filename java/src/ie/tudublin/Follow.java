@@ -12,18 +12,20 @@ public class Follow {
     public String getWord() {
         return word;
     }
-    public void setWord(String word) {
-        this.word = word;
-    }
+
     public int getCount() {
-        return count;
+        return this.count;
     }
     public void setCount(int count) {
         this.count = count;
     }
 
+    public void incrementCount() {
+        this.count++;
+    }
+
     public String toString() {
-        return word + "(" + count + ")";
+        return (String) word + "( " + count + " )";
     }
     
 } // End class Follow

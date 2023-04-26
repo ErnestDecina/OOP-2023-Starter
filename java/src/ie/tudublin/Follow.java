@@ -5,9 +5,9 @@ public class Follow {
     String word;
     int count;
 
-    public Follow(String word, int count) {
+    public Follow(String word) {
         this.word = word;
-        this.count = count;
+        this.count = 1;
     } // End Follow Constructor
 
 
@@ -25,6 +25,10 @@ public class Follow {
     public String toString() {
         return "Word: " + word + "Appears " + count + "times.";
     }   
+
+    public void incrementCount() {
+        count++;
+    } // End void incremenentCount
 
 
     

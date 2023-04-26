@@ -95,7 +95,6 @@ public class DANI extends PApplet {
 				Follow randomFollowWord = randomWordfromIndex.getFollowArrayList().get(randomFollow);
 				sonnetStringBuilder.append(randomFollowWord.getWord() + " ");
 				randomWordfromIndex = wordArrayList.get(findWord(randomFollowWord.getWord()));
-
 			}
 			String s = sonnetStringBuilder.toString();
 			sonnetStringArray[i] = s;
@@ -116,9 +115,7 @@ public class DANI extends PApplet {
 		textSize(textSize);
 		int gap = 20;
 		for(int stringSonnetIndex = 0; stringSonnetIndex <sonnetStringArray.length; stringSonnetIndex++)
-		{
 			text(sonnetStringArray[stringSonnetIndex], (width / 2) - 300, gap + stringSonnetIndex * gap + (300));
-		}
 		
 		popMatrix();
 		popStyle();

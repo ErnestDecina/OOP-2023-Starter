@@ -102,4 +102,13 @@ public class DANI extends PApplet {
 		return -1;
 	}
 
+	public void printModel()
+	{
+		for(Word w:model)
+		{
+			System.out.println(w.toString());
+		}
+	}
+	
+
 }

@@ -90,4 +90,16 @@ public class DANI extends PApplet {
 		}
 	}
 
+	public int findWord(String word)
+	{
+		for(int i = 0; i < model.size(); i ++)
+		{
+			if(model.get(i).getWord().equals(word))
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+
 }

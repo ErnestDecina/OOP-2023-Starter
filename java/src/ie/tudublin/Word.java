@@ -21,7 +21,7 @@ public class Word {
     public void setFollowArrayList(ArrayList<Follow> follows) {
         this.followArrayList = follows;
     }
-    
+
     public void addFollow(Follow currentFollow) {
         followArrayList.add(currentFollow);
     }

@@ -67,10 +67,8 @@ public class DANI extends PApplet {
 	}
 
 	public int findWord(String word){
-		for(int i = 0; i < wordArrayList.size(); i ++) {
-			if(wordArrayList.get(i).getWord().equals(word)) {
-				return i;
-			}
+		for(int wordIndex = 0; wordIndex < wordArrayList.size(); wordIndex ++) {
+			if(wordArrayList.get(wordIndex).getWord().equals(word)) return wordIndex;
 		}
 		return -1;
 	}

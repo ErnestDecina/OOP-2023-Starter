@@ -16,9 +16,6 @@ public class Follow {
     public int getCount() {
         return this.count;
     }
-    public void setCount(int count) {
-        this.count = count;
-    }
 
     public void incrementCount() {
         this.count++;

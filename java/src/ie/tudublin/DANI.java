@@ -8,6 +8,7 @@ public class DANI extends PApplet {
 	ArrayList<Word> model;
 	ArrayList<String> sonnect;
 	StringBuilder sb;
+	float off = 0;
 
 	public void settings() {
 		size(1000, 1000);
@@ -150,6 +151,21 @@ public class DANI extends PApplet {
 		{
 			System.out.println(s);
 		}
+	}
+
+	public void draw() 
+    {
+		background(0);
+		fill(255);
+		noStroke();
+		textSize(20);
+        textAlign(CENTER, CENTER);
+		int gap = 50;
+		for(int i = 0;i<sonnet.length;i++)
+		{
+			text(sonnet[i], width/2, gap + i * gap);
+		}
+        
 	}
 
 

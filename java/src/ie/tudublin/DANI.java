@@ -144,5 +144,13 @@ public class DANI extends PApplet {
 		}
 	}
 
+	public void printSonnet()
+	{
+		for(String s:sonnet)
+		{
+			System.out.println(s);
+		}
+	}
+
 
 }

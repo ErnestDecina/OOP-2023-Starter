@@ -1,35 +1,29 @@
 package ie.tudublin;
 
 public class Follow {
-    // Private feilds
-    String word;
-    int count;
+    public String word;
+    public int count;
 
-    public Follow(String word) {
-        this.word = word;
-        this.count = 1;
-    } // End Follow Constructor
-
-
-
-
-    // Accessort Methods
     public String getWord() {
         return word;
     }
-
+    public void setWord(String word) {
+        this.word = word;
+    }
     public int getCount() {
         return count;
     }
-
-    public String toString() {
-        return "Word: " + word + "Appears " + count + "times.";
-    }   
-
-    public void incrementCount() {
-        count++;
-    } // End void incremenentCount
-
-
+    public void setCount(int count) {
+        this.count = count;
+    }
+    public Follow(String word,int count)
+    {
+        this.word=word;
+        this.count=count;
+    }
+    public String toString()
+    {
+        return word + "(" + count + ")";
+    }
     
 } // End class Follow

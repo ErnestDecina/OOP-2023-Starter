@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 
 public class DANI extends PApplet {
-	ArrayList<Word> wordArrayList;
+	ArrayList<Word> wordArrayList = new ArrayList<Word>();
 	ArrayList<String> stringArrayList;
 	StringBuilder sonnetStringBuilder;
 	String[] sonnetStringArray;
@@ -18,7 +18,6 @@ public class DANI extends PApplet {
 
 	public void setup() {
 		colorMode(HSB);
-		wordArrayList = new ArrayList<Word>();
 		loadFile();
 		showModel();
 		createSonnet();       
@@ -67,7 +66,7 @@ public class DANI extends PApplet {
 	}
 
 	public int searchWord(String word){
-		for(int wordIndex = 0; wordIndex < wordArrayList.size(); wordIndex ++)
+		for(int wordIndex = 0; wordIndex < wordArrayList.size(); wordIndex++)
 			if(wordArrayList.get(wordIndex).getWord().equals(word)) return wordIndex;
 
 		return -1;
@@ -80,7 +79,7 @@ public class DANI extends PApplet {
 
 	public void createSonnet(){
 		sonnetStringArray = new String[sonnetSize];
-		for (int i = 0; i < sonnetSize; i++) {
+		for (int currentSonnetString = 0; currentSonnetString < sonnetSize; currentSonnetString++) {
 			int randomNumbeIndex = (int) random(0, wordArrayList.size());
 			Word randomWordfromIndex = wordArrayList.get(randomNumbeIndex);
 			sonnetStringBuilder = new StringBuilder();
@@ -96,8 +95,8 @@ public class DANI extends PApplet {
 				sonnetStringBuilder.append(randomFollowWord.getWord() + " ");
 				randomWordfromIndex = wordArrayList.get(searchWord(randomFollowWord.getWord()));
 			}
-			String s = sonnetStringBuilder.toString();
-			sonnetStringArray[i] = s;
+			String totalSonnetString = sonnetStringBuilder.toString();
+			sonnetStringArray[currentSonnetString] = totalSonnetString;
 		}
 	}
 
@@ -120,6 +119,4 @@ public class DANI extends PApplet {
 		popMatrix();
 		popStyle();
 	}
-
-
-}
+} // End class DANI

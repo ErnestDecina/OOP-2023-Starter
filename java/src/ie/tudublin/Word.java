@@ -18,12 +18,12 @@ public class Word {
         return followArrayList;
     }
 
-    public void setFollowArrayList(ArrayList<Follow> follows) {
-        this.followArrayList = follows;
+    public void setFollowArrayList(ArrayList<Follow> currentFollow) {
+        this.followArrayList = currentFollow;
     }
 
     public void addFollow(Follow currentFollow) {
-        followArrayList.add(currentFollow);
+        this.followArrayList.add(currentFollow);
     }
 
     public void addFollowCount(Follow currentFollow) {
@@ -32,7 +32,7 @@ public class Word {
 
     public int findFollow(String word) {
         for(Follow currentFollow : followArrayList)
-            if(currentFollow.getWord().equals(word))  return followArrayList.indexOf(currentFollow);
+            if(currentFollow.getWord().equals(word))  return this.followArrayList.indexOf(currentFollow);
         return -1;
     }
 

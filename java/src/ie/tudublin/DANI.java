@@ -31,14 +31,16 @@ public class DANI extends PApplet {
 	}
 
 	public void loadFile() {
+		int findWordResult;
+		boolean finalWordInString;
+		Word newWord;
 		String[] stringArray = loadStrings("shakespere.txt");
+
 		for(int stringIndex = 0; stringIndex < stringArray.length; stringIndex++) {
 			String[] wordsArray = split(stringArray[stringIndex], " ");
 			for(int wordIndex = 0; wordIndex < wordsArray.length; wordIndex ++) {
 				wordsArray[wordIndex] = wordsArray[wordIndex].replaceAll("[^a-zA-Z ]", "");
 				wordsArray[wordIndex] = wordsArray[wordIndex].toLowerCase();
-
-				boolean finalWordInString;
 
 				if(wordIndex + 1 == wordsArray.length) finalWordInString = true;
 				else finalWordInString = false;
@@ -48,9 +50,8 @@ public class DANI extends PApplet {
 					wordsArray[wordIndex+1] = wordsArray[wordIndex+1].toLowerCase();
 				}
 
-				int findWordResult = searchWord(wordsArray[wordIndex]);
-				Word newWord;
-					
+				findWordResult = searchWord(wordsArray[wordIndex]);
+	
 				if(findWordResult == -1) {
 					newWord = new Word(wordsArray[wordIndex]);
 					wordArrayList.add(newWord);

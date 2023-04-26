@@ -79,6 +79,8 @@ public class DANI extends PApplet {
 	}
 
 	public void createSonnet(){
+		String totalSonnetString;
+		Follow randomFollowWord;
 		sonnetStringArray = new String[sonnetSize];
 		for (int currentSonnetString = 0; currentSonnetString < sonnetSize; currentSonnetString++) {
 			int randomNumbeIndex = (int) random(0, wordArrayList.size());
@@ -92,11 +94,11 @@ public class DANI extends PApplet {
 				if(randomWordfromIndex.getFollowArrayList().size() == 0) break;
 				else randomFollow = (int) random(0, randomWordfromIndex.getFollowArrayList().size());
 
-				Follow randomFollowWord = randomWordfromIndex.getFollowArrayList().get(randomFollow);
+				randomFollowWord = randomWordfromIndex.getFollowArrayList().get(randomFollow);
 				sonnetStringBuilder.append(randomFollowWord.getWord() + " ");
 				randomWordfromIndex = wordArrayList.get(searchWord(randomFollowWord.getWord()));
 			}
-			String totalSonnetString = sonnetStringBuilder.toString();
+			totalSonnetString = sonnetStringBuilder.toString();
 			sonnetStringArray[currentSonnetString] = totalSonnetString;
 		}
 	}

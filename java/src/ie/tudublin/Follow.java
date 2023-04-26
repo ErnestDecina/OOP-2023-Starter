@@ -7,7 +7,7 @@ public class Follow {
     public Follow(String word,int count) {
         this.word=word;
         this.count=count;
-    } // End Followw Constructor
+    } // End Follow Constructor
 
     public String getWord() {
         return word;

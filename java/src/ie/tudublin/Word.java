@@ -6,6 +6,11 @@ public class Word {
     private String word;
     private ArrayList<Follow> followArrayList;
 
+    public Word(String word) {
+        this.word = word;
+        followArrayList = new ArrayList<Follow>();
+    } // End Word Constructor
+
     public String getWord() {
         return word;
     }
@@ -34,12 +39,6 @@ public class Word {
         for(Follow currentFollow : followArrayList)
             if(currentFollow.getWord().equals(word))  return this.followArrayList.indexOf(currentFollow);
         return -1;
-    }
-
-
-    public Word(String word) {
-        this.word = word;
-        followArrayList = new ArrayList<Follow>();
     }
     
     public String toString() {

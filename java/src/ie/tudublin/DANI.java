@@ -74,9 +74,8 @@ public class DANI extends PApplet {
 	}
 
 	public void showModel(){
-		for(Word wordInArrayList : wordArrayList) {
+		for(Word wordInArrayList : wordArrayList) 
 			System.out.println(wordInArrayList.toString());
-		}
 	}
 
 	public void createSonnet(){
